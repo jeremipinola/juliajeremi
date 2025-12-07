@@ -3,13 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julia & Jeremi - Wedding Invitation</title>
+  <title>Julia & Jeremi Wedding</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
 
   <!-- Basic CSS -->
   <style>
+
+     #place, #time, #detailsVenue, #detailsDress, #aboutText {
+      margin-bottom: 1rem;
+      margin-left: 10rem;
+      text-align: left;
+    }
+        /* Navigation Bar Styles */
+        nav {
+          width: 100%;
+          background: var(--primary);
+          color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          font-family: 'Open Sans', sans-serif;
+        }
+        nav ul {
+          list-style: none;
+          display: flex;
+          gap: 2rem;
+          margin: 0;
+          padding: 0.7rem 0;
+        }
+        nav ul li {
+          display: inline;
+        }
+        nav ul li a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 1.1rem;
+          font-weight: 500;
+          padding: 0.3rem 0.7rem;
+          border-radius: 6px;
+          transition: background 0.2s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+          background: var(--secondary);
+          color: var(--primary);
+        }
+        @media (max-width: 700px) {
+          nav ul {
+            gap: 0.7rem;
+          }
+          nav ul li a {
+            font-size: 1rem;
+            padding: 0.3rem 0.4rem;
+          }
+        }
     :root {
       --primary: #4f1133;
       --secondary: #939d29;
@@ -28,24 +79,24 @@
     }
 
     header {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      background: var(--background),
                   url('https://images.unsplash.com/photo-1529634890565-f836f6df72b1?auto=format&fit=crop&w=1920&q=80') center/cover;
-      color: white;
-      padding: 10rem 1rem;
+      color: var(--primary);
+      padding: 6rem 1rem;
     }
 
     header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 0.5rem;
     }
 
     header p {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
     }
 
     section {
-      padding: 4rem 1.5rem;
+      padding: 2.5rem 1rem;
       max-width: 800px;
       margin: auto;
     }
@@ -68,11 +119,35 @@
       justify-content: center;
     }
     @media (max-width: 700px) {
+      header {
+        padding: 3rem 0.5rem;
+      }
+      header h1 {
+        font-size: 1.7rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      img[src="juliajeremi.png"] {
+        max-width: 95vw !important;
+        height: auto !important;
+        margin-top: 1rem !important;
+      }
+      section {
+        padding: 1.2rem 0.5rem;
+      }
       .google-form iframe {
         width: 100% !important;
         min-width: 0 !important;
+        height: 400px !important;
       }
     }
+
+      @media (min-width: 900px) {
+        img[src="juliajeremi.png"] {
+          max-width: 700px !important;
+        }
+      }
 
     footer {
       background: var(--primary);
@@ -84,54 +159,134 @@
   </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <div style="margin-left:auto; margin-right:3rem;">
+      <ul>
+          <li><a href="#details" id="navDetails">Details</a></li>
+        <li><a href="#rsvp" id="navRSVP">RSVP</a></li>
+        <li><a href="#gallery" id="navGallery">Gallery</a></li>
+      </ul>
+      </div>
+         <!-- Language Switcher -->
+    <div style=" margin-left: auto; margin-right:1rem;">
+      <select id="languageSwitcher" style="font-size:1.2rem;padding:0.3rem 0.7rem;border-radius:8px;">
+        <option value="en">🇬🇧</option>
+        <option value="fi">🇫🇮</option>
+      </select>
+    </div>
+    </nav>
 
-  <header>
-    <h1>Julia & Jeremi</h1>
-    <p>We're getting married!</p>
-    <p>August 8, 2026 • Matilda-Talo</p>
+ 
+    <h1 id="title">Julia & Jeremi</h1> 
+    <img src="juliajeremi.png" alt="Julia & Jeremi" style="max-width:95vw; width:100%; height:auto; margin-top:2rem;" />
   </header>
-
-  <section id="details">
-    <h2>The Wedding Details</h2>
-    <p><strong>Date:</strong> Saturday, August 8, 2026</p>
-    <p><strong>Venue:</strong> Matilda-Talo</p>
-    <p><a href="https://matildatalo.fi/" target="_blank" rel="noopener">https://matildatalo.fi/</a></p>
-    <p><strong>Dress Code:</strong> Garden Formal</p>
-
+   <p id="subtitle">We're getting married!</p>
+  
     <div class="countdown" id="countdown"></div>
   </section>
 
+  <section id="details">
+    <h2 id="detailsTitle">Details</h2>
+    <div id="detailsText">
+      We are getting married and would love to celebrate with you!</p>
+    <div id="place"><strong>Where: </strong> <a href="https://matildatalo.fi/" target="_blank" rel="noopener">Matilda-talo</a> • Salo  </div>
+    <div id="time"><strong>When: </strong><span>August 8, 2026 • 15:00</span></div>
+    <div id="detailsDress"><strong>Dress Code:</strong> Formal</div>
+
+  </section>
+
   <section id="rsvp">
-    <h2>RSVP</h2>
-    <p>Please let us know by May 15, 2025</p>
+    <h2 id="rsvpTitle">RSVP</h2>
+    <p id="rsvpDesc">Please let us know by May 15, 2025</p>
     <div class="google-form">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfYNVzzEVMoNTvbCDPRSzw6mABW4DqZNR_0BfONpWjtZe2XBw/viewform?embedded=true" width="640" height="993" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 Julia & Jeremi | Built with ❤️</p>
+    <p id="footerText">© 2025 Julia & Jeremi | Built with ❤️</p>
   </footer>
 
   <!-- Countdown Timer Script -->
   <script>
+    // === TRANSLATIONS SECTION ===
+    // Edit the translations below. You can change any text or add more languages.
+    // For dynamic values (like countdown), use the function format as shown.
+    const translations = {
+      en: {
+        title: "Julia & Jeremi",
+        subtitle: "We're getting married!",
+        date: "August 8, 2026 • Matilda-Talo",
+        detailsVenue: "<strong>Venue:</strong> Matilda-Talo",
+        detailsVenueLink: '<a href="https://matildatalo.fi/" target="_blank" rel="noopener">https://matildatalo.fi/</a>',
+        detailsDress: "<strong>Dress Code:</strong> Garden Formal",
+        rsvpTitle: "RSVP",
+        rsvpDesc: "Please let us know by May 15, 2025",
+        footerText: "© 2025 Julia & Jeremi | Built with ❤️",
+        countdown: (days, hours, minutes) => `${days}d ${hours}h ${minutes}m until the wedding 💕`,
+        countdownToday: "Today’s the big day! 💍"
+      },
+      fi: {
+        title: "Julia & Jeremi",
+        subtitle: "Me menemme naimisiin!",
+        date: "8. elokuuta 2026",
+        detailsVenue: "<strong>Paikka:</strong> Matilda-Talo",
+        detailsVenueLink: '<a href="https://matildatalo.fi/" target="_blank" rel="noopener">https://matildatalo.fi/</a>',
+        detailsDress: "<strong>Pukukoodi:</strong> Puutarhajuhla",
+        rsvpTitle: "Ilmoittautuminen",
+        rsvpDesc: "Ilmoitathan meille 15.5.2025 mennessä",
+        footerText: "© 2025 Julia & Jeremi | Tehty rakkaudella ❤️",
+        countdown: (days, hours, minutes) => `${days}p ${hours}t ${minutes}m häihin 💕`,
+        countdownToday: "Tänään on suuri päivä! 💍"
+      }
+    };
+    // === END TRANSLATIONS SECTION ===
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById('title').innerHTML = t.title;
+      document.getElementById('subtitle').innerHTML = t.subtitle;
+      document.getElementById('date').innerHTML = t.date;
+      document.getElementById('detailsVenue').innerHTML = t.detailsVenue;
+      document.getElementById('detailsVenueLink').innerHTML = t.detailsVenueLink;
+      document.getElementById('detailsDress').innerHTML = t.detailsDress;
+      document.getElementById('rsvpTitle').innerHTML = t.rsvpTitle;
+      document.getElementById('rsvpDesc').innerHTML = t.rsvpDesc;
+      document.getElementById('footerText').innerHTML = t.footerText;
+    }
+
+    // Language switcher event
+    document.getElementById('languageSwitcher').addEventListener('change', function(e) {
+      setLanguage(e.target.value);
+      localStorage.setItem('weddingLang', e.target.value);
+    });
+
+    // Set initial language
+    const savedLang = localStorage.getItem('weddingLang') || 'en';
+    document.getElementById('languageSwitcher').value = savedLang;
+    setLanguage(savedLang);
+
+    // Countdown Timer Script
     const weddingDate = new Date("August 8, 2026 15:00:00").getTime();
     const countdownEl = document.getElementById("countdown");
-
+    let currentLang = savedLang;
+    document.getElementById('languageSwitcher').addEventListener('change', function(e) {
+      currentLang = e.target.value;
+    });
     const timer = setInterval(() => {
       const now = new Date().getTime();
       const distance = weddingDate - now;
-
+      const t = translations[currentLang];
       if (distance < 0) {
         clearInterval(timer);
-        countdownEl.innerHTML = "Today’s the big day! 💍";
+        countdownEl.innerHTML = t.countdownToday;
         return;
       }
-
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m until the wedding 💕`;
+      countdownEl.innerHTML = t.countdown(days, hours, minutes);
     }, 1000);
   </script>
 </body>
